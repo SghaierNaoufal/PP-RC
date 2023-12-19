@@ -29,6 +29,7 @@ CREATE TABLE "preparation"(
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "description" TEXT NOT NULL,
     "position" TEXT NOT NULL,
+    "recipe_id" INT NOT NULL REFERENCES "recipe"("id") ON DELETE CASCADE,
 );
 
 CREATE TABLE "category"(
@@ -40,9 +41,9 @@ CREATE TABLE "reviews"(
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "description" TEXT NOT NULL,
     "grade" INTEGER CHECK ("grade" >= 1 AND "grade" <= 5)
-    "created_at" TIMESTAMPTZ NOT NULL,
-    "updated_at" TIMESTAMPTZ,
     "recipe_id" INT NOT NULL REFERENCES "recipe"("id") ON DELETE CASCADE,
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
+    "updated_at" TIMESTAMPTZ,
 );
 
 CREATE TABLE "image"(
