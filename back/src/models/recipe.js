@@ -1,4 +1,4 @@
-const {DataTypes, Model} = require('sequelize');
+const {DataTypes, Model} = require ('sequelize');
 const sequelize = require('./sequelize')
 
 class Recipe extends Model {}
@@ -9,7 +9,8 @@ Recipe.init({
     difficulty : DataTypes.TEXT,
     preparation_time : DataTypes.TEXT,
     cooking_time : DataTypes.TEXT,
-    serving_number : DataTypes.INTEGER
+    serving_number : DataTypes.INTEGER,
+    category_id : DataTypes.INTEGER
 }, {
     sequelize,
     tableName : 'recipe'

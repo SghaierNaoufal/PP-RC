@@ -4,6 +4,10 @@ BEGIN;
 DROP TABLE IF EXISTS "recipe", "ingredient","preparation","category", "review", "image";
 
 -- Création des tables
+CREATE TABLE "category" (
+    "id" SERIAL PRIMARY KEY,
+    "name" TEXT NOT NULL
+);
 
 CREATE TABLE "recipe" (
     "id" SERIAL PRIMARY KEY,
@@ -13,6 +17,7 @@ CREATE TABLE "recipe" (
     "preparation_time" TEXT NOT NULL, 
     "cooking_time" TEXT NOT NULL,
     "serving_number" INTEGER,
+    "category_id" INTEGER NOT NULL REFERENCES "category"("id"),
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
 );
@@ -32,10 +37,6 @@ CREATE TABLE "preparation" (
     "recipe_id" INTEGER NOT NULL REFERENCES "recipe"("id") ON DELETE CASCADE
 );
 
-CREATE TABLE "category" (
-    "id" SERIAL PRIMARY KEY,
-    "name" TEXT NOT NULL
-);
 
 CREATE TABLE "review" (
     "id" SERIAL PRIMARY KEY,

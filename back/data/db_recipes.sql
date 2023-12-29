@@ -1,13 +1,15 @@
 BEGIN;
 
-INSERT INTO "recipe" ("name", "description", "difficulty", "preparation_time", "cooking_time", "serving_number") VALUES 
-    ('Pâtes à la Carbonara', 'Des pâtes crémeuses à la carbonara avec une sauce riche à base de pancetta, d''œufs et de parmesan', 'Facile', 'trente minutes', 'quinze minutes', 2),
-    ('Tarte aux Pommes', 'Une tarte classique aux pommes avec une croûte croustillante, une garniture de compote de pommes et une touche de cannelle.', 'Moyen', 'quarante-cinq minutes', 'quarante minutes', 8),
-    ('Salade César', 'Une salade fraîche et croquante avec des morceaux de poulet grillé, des croûtons croustillants et une délicieuse vinaigrette césar.', 'Facile', 'vingt minutes', 'dix minutes', 2),
-    ('Poulet Rôti aux Herbes', 'Un délicieux poulet rôti, mariné dans un mélange d''herbes fraîches et d''épices, cuit à la perfection.', 'Moyen', 'une heure', 'une heure trente minutes', 4),
-    ('Lasagnes au Boeuf', 'Des lasagnes gratinées avec une sauce bolognaise savoureuse, des couches de pâtes et une béchamel onctueuse.', 'Difficile', 'une heure trente minutes', 'quarante-cinq minutes', 6),
-    ('Sushi Rolls', 'Des rouleaux de sushi frais et colorés avec du poisson cru, des légumes croquants et du riz vinaigré.', 'Moyen', 'une heure', 'vingt minutes', 4),
-    ('Poulet au Curry Indien', 'Des morceaux de poulet tendres cuits dans une sauce au curry indien parfumée, servi avec du riz basmati.', 'Moyen', 'quarante minutes', 'vingt-cinq minutes', 3);
+INSERT INTO "category" ("name") VALUES
+    ('Entrée'),
+    ('Apéro'),
+    ('Plat principal'),
+    ('Dessert');
+    
+INSERT INTO "recipe" ("name", "description", "difficulty", "preparation_time", "cooking_time", "serving_number", "category_id") VALUES 
+    ('Pâtes à la Carbonara', 'Des pâtes crémeuses à la carbonara avec une sauce riche à base de pancetta, d''œufs et de parmesan', 'Facile', 'trente minutes', 'quinze minutes', 2, 3),
+    ('Tarte aux Pommes', 'Une tarte classique aux pommes avec une croûte croustillante, une garniture de compote de pommes et une touche de cannelle.', 'Moyen', 'quarante-cinq minutes', 'quarante minutes', 8, 4),
+    ('Salade César', 'Une salade fraîche et croquante avec des morceaux de poulet grillé, des croûtons croustillants et une délicieuse vinaigrette césar.', 'Facile', 'vingt minutes', 'dix minutes', 2, 1);
 
 INSERT INTO "ingredient" ("recipe_id", "name", "quantity", "unity_type") VALUES
     (1, 'Pâtes', 200, 'g'),
@@ -46,11 +48,6 @@ INSERT INTO "preparation" ("recipe_id", "description", "position") VALUES
     (3, 'Ajouter les morceaux de poulet grillé sur le dessus de la salade.', 5),
     (3, 'Servir immédiatement, éventuellement saupoudré de fromage parmesan supplémentaire.', 6);
 
-INSERT INTO "category" ("name") VALUES
-    ('Entrée'),
-    ('Apéro'),
-    ('Plat principal'),
-    ('Dessert');
 
 INSERT INTO "review" ("recipe_id", "description", "grade") VALUES
     (1, 'Délicieuses pâtes à la carbonara, la sauce est parfaite !', 5),
