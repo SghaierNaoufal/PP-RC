@@ -1,0 +1,1 @@
+const { Recipe, Image, Category, Ingredient, Review } = require('../models')
