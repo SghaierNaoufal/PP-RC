@@ -1,10 +1,10 @@
-const { Datatypes, Model } = require("sequelize");
+const { DataTypes, Model } = require("sequelize");
 const sequelize = require("./sequelize");
 
 class Category extends Model {}
 
 Category.init({
-    name : Datatypes.TEXT
+    name : DataTypes.TEXT
 }, {
     sequelize,
     tableName :'category'

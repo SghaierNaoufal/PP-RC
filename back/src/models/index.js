@@ -1,6 +1,6 @@
 const Category = require('./category');
 const Image = require('./image');
-const Ingredients = require('./ingredient');
+const Ingredient = require('./ingredient');
 const Preparation = require('./preparation');
 const Recipe = require('./recipe');
 const Review = require('./review')
@@ -25,12 +25,12 @@ Recipe.hasMany(Image, {
     foreignKey : 'recipe_id'
 });
 
-Ingredients.belongsTo(Recipe, {
+Ingredient.belongsTo(Recipe, {
     as : 'recipe',
     foreignKey : 'recipe_id'
 });
 
-Recipe.hasMany(Ingredients, {
+Recipe.hasMany(Ingredient, {
     as : 'ingredients',
     foreignKey : 'recipe_id'
 });
@@ -54,3 +54,5 @@ Recipe.hasMany(Review, {
     as : 'reviews',
     foreignKey : 'recipe_id'
 });
+
+module.exports = {Category, Image, Ingredient, Preparation, Recipe, Review };
